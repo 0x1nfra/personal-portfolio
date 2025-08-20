@@ -1,8 +1,7 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
-import { Input } from '@/components/ui/input'
 import { Separator } from '@/components/ui/separator'
-import { Facebook, Twitter, Linkedin, Instagram, Youtube, Github, Mail } from 'lucide-react'
+import { Twitter, Linkedin, Github, Mail, ArrowUpRight } from 'lucide-react'
 
 const navigationLinks = [
   { name: 'Home', href: '/' },
@@ -12,7 +11,6 @@ const navigationLinks = [
   { name: 'Contact', href: '/contact' },
 ]
 
-// TODO: add legal documents
 const legalLinks = [
   { name: 'Privacy Policy', href: '/privacy' },
   { name: 'Terms of Service', href: '/terms' },
@@ -22,90 +20,124 @@ const socialLinks = [
   { icon: Github, href: 'https://github.com/0x1nfra', label: 'GitHub' },
   { icon: Twitter, href: 'https://x.com/0x1nfra', label: 'Twitter' },
   { icon: Linkedin, href: 'https://www.linkedin.com/in/irfanmurad/', label: 'LinkedIn' },
-  // { icon: Facebook, href: '#', label: 'Facebook' },
-  // { icon: Instagram, href: '#', label: 'Instagram' },
-  // { icon: Youtube, href: '#', label: 'YouTube' },
 ]
 
 export function Footer() {
   return (
-    <footer className="border-t bg-background">
-      <div className="container mx-auto px-6 py-8">
+    <footer className="relative border-t border-border/40 bg-gradient-to-br from-background via-background to-muted/10">
+      <div className="absolute top-0 left-1/2 transform -translate-x-1/2 w-24 h-px bg-gradient-to-r from-transparent via-primary to-transparent"></div>
+
+      <div className="container mx-auto px-6 py-20 max-w-7xl">
         {/* Main Footer Content */}
-        <div className="grid grid-cols-1 lg:grid-cols-3 gap-8 items-start">
-          {/* Logo and Description Section */}
-          <div className="space-y-4">
-            <div className="flex items-center space-x-2">
-              <div className="w-8 h-8 bg-primary rounded-sm flex items-center justify-center">
-                <span className="text-primary-foreground font-bold text-sm">IM</span>
+        <div className="grid grid-cols-1 lg:grid-cols-12 gap-16 items-start">
+          {/* Logo and CTA Section - Enhanced spacing and typography */}
+          <div className="lg:col-span-6 space-y-10">
+            <div className="space-y-8">
+              <div className="flex items-center space-x-4">
+                <div className="w-12 h-12 bg-gradient-to-br from-primary to-primary/80 rounded-xl flex items-center justify-center shadow-lg transition-all duration-200 hover:shadow-xl hover:scale-105">
+                  <span className="text-primary-foreground font-bold text-lg">IM</span>
+                </div>
+                <span className="font-bold text-2xl tracking-tight text-foreground">
+                  Irfan Murad
+                </span>
               </div>
-              <span className="font-bold text-lg">Irfan Murad</span>
-            </div>
 
-            <div className="space-y-4">
-              <h3 className="text-2xl font-bold text-foreground max-w-md">Lets build together</h3>
+              <div className="space-y-8 max-w-lg">
+                <div className="space-y-4">
+                  <h3 className="text-4xl font-bold text-foreground leading-tight">
+                    Got a project in mind?
+                  </h3>
+                  <p className="text-muted-foreground text-xl font-medium">
+                    Let&apos;s create something amazing together
+                  </p>
+                </div>
 
-              <p className="text-muted-foreground max-w-md">
-                Connect with me for your next project.
-              </p>
+                <div className="space-y-6">
+                  <div className="space-y-4">
+                    <Link
+                      href="mailto:irfanfmurad@gmail.com"
+                      className="inline-flex items-center gap-3 text-foreground hover:text-primary transition-colors group p-2 -m-2 rounded-lg hover:bg-accent/20"
+                    >
+                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-muted/50 text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+                        <Mail className="h-4 w-4" />
+                      </div>
+                      <span className="font-medium text-lg">irfanfmurad@gmail.com</span>
+                      <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </Link>
+                  </div>
+
+                  <div>
+                    <Button
+                      size="lg"
+                      className="rounded-xl px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-gradient-to-r from-primary to-primary/90 hover:cursor-pointer"
+                    >
+                      Get a quote
+                      <ArrowUpRight className="ml-2 h-5 w-5" />
+                    </Button>
+                  </div>
+                </div>
+              </div>
             </div>
           </div>
 
-          {/* Navigation Links - Vertical & Centered */}
-          <nav className="flex flex-col gap-3 items-center text-center justify-self-center">
-            {navigationLinks.map((link) => (
-              <Link
-                key={link.name}
-                href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors"
-              >
-                {link.name}
-              </Link>
-            ))}
-          </nav>
-
-          {/* Contact Section - More Width */}
-          {/* TODO: add sending email functions */}
-          <div className="space-y-4 justify-self-end w-full max-w-xs">
-            <h3 className="text-sm font-medium">Contact</h3>
-            <div className="space-y-3">
-              <Input type="text" placeholder="Name" />
-              <Input type="email" placeholder="Email" />
-              <Button type="submit" size="sm" className="w-full">
-                Get In Touch
-              </Button>
-            </div>
-
-            {/* Social Icons Section */}
-            <div className="pt-2">
-              <div className="flex space-x-4">
-                {socialLinks.map((social) => (
+          {/* Navigation and Social Links - Enhanced layout and styling */}
+          <div className="lg:col-span-6 grid grid-cols-1 sm:grid-cols-2 gap-12">
+            <div className="space-y-8">
+              <h4 className="text-sm font-bold text-foreground uppercase tracking-wider">
+                Navigation
+              </h4>
+              <nav className="flex flex-col gap-5">
+                {navigationLinks.map((link) => (
                   <Link
-                    key={social.label}
-                    href={social.href}
-                    className="text-muted-foreground hover:text-foreground transition-colors"
-                    aria-label={social.label}
-                    target="_blank"
+                    key={link.name}
+                    href={link.href}
+                    className="text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium group inline-flex items-center gap-2 text-base p-1 -m-1 rounded-lg hover:bg-accent/20"
                   >
-                    <social.icon className="h-5 w-5" />
+                    {link.name}
+                    <ArrowUpRight className="h-3 w-3 opacity-0 group-hover:opacity-100 transition-opacity" />
                   </Link>
                 ))}
+              </nav>
+            </div>
+
+            <div className="space-y-8">
+              <h4 className="text-sm font-bold text-foreground uppercase tracking-wider">
+                Connect
+              </h4>
+              <div className="space-y-6">
+                <div className="flex flex-wrap gap-4">
+                  {socialLinks.map((social) => (
+                    <Link
+                      key={social.label}
+                      href={social.href}
+                      className="flex items-center justify-center w-12 h-12 rounded-xl bg-muted/30 text-muted-foreground hover:bg-primary hover:text-primary-foreground transition-all duration-300 hover:scale-110 shadow-sm hover:shadow-lg group"
+                      aria-label={social.label}
+                      target="_blank"
+                    >
+                      <social.icon className="h-5 w-5" />
+                    </Link>
+                  ))}
+                </div>
+                <p className="text-muted-foreground text-sm leading-relaxed">
+                  Follow me for updates on projects, insights, and industry trends.
+                </p>
               </div>
             </div>
           </div>
         </div>
 
-        <Separator className="my-8" />
+        <div className="relative my-16">
+          <Separator className="bg-gradient-to-r from-transparent via-border to-transparent" />
+        </div>
 
-        {/* Bottom Section */}
-        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-4">
+        <div className="flex flex-col sm:flex-row justify-between items-start sm:items-center gap-8">
           {/* Legal Links */}
-          <div className="flex flex-wrap gap-6">
+          <div className="flex flex-wrap gap-8">
             {legalLinks.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm text-muted-foreground hover:text-foreground transition-colors underline"
+                className="text-sm text-muted-foreground hover:text-foreground transition-colors duration-200 font-medium"
               >
                 {link.name}
               </Link>
@@ -113,7 +145,9 @@ export function Footer() {
           </div>
 
           {/* Copyright */}
-          <p className="text-sm text-muted-foreground">© 2025 Irfan Murad. All rights reserved.</p>
+          <p className="text-sm text-muted-foreground font-medium">
+            © 2025 Irfan Murad. All rights reserved.
+          </p>
         </div>
       </div>
     </footer>

@@ -1,7 +1,9 @@
 import { headers as getHeaders } from 'next/headers.js'
 import { getPayload } from 'payload'
-import React from 'react'
 import config from '@/payload.config'
+import Hero from '@/components/Hero'
+import Services from '@/components/Services'
+import Testimonials from '@/components/Testimonials'
 
 export default async function HomePage() {
   const headers = await getHeaders()
@@ -10,7 +12,11 @@ export default async function HomePage() {
 
   return (
     <div className="home">
-      <div className="content"></div>
+      <div className="content">
+        <Hero />
+        <Testimonials />
+        <Services />
+      </div>
     </div>
   )
 }
