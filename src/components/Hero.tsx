@@ -1,6 +1,35 @@
 import { Button } from '@/components/ui/button'
+import { getPayload } from 'payload'
+import config from '@/payload.config'
+import Image from 'next/image'
+import React from 'react'
 
-export default function Hero() {
+export default async function Hero() {
+  //   // Fetch media from Payload
+  //   const payload = await getPayload({ config })
+  //   const media = await payload.find({
+  //     collection: 'media',
+  //     limit: 1,
+  //     where: {
+  //       alt: {
+  //         equals: 'Profile Picture',
+  //       },
+  //     },
+  //   })
+
+  const payload = await getPayload({ config })
+  const media = await payload.find({
+    collection: 'media',
+    limit: 1,
+    where: {
+      alt: {
+        equals: 'Profile Picture',
+      },
+    },
+  })
+
+  const mediaDoc = media.docs[0]
+
   return (
     <section className="relative min-h-screen flex items-center justify-center bg-gradient-to-br from-background via-background to-muted/10">
       <div className="container mx-auto px-6 lg:px-8">
@@ -8,7 +37,6 @@ export default function Hero() {
           {/* Content Section - Left */}
           <div className="space-y-8 text-center lg:text-left">
             <div className="space-y-6">
-              {/* TODO: add payload implementation here */}
               <h1 className="text-4xl md:text-5xl lg:text-6xl font-black tracking-tight text-foreground">
                 I Build
                 <span className="block text-primary">Websites</span>
@@ -36,7 +64,6 @@ export default function Hero() {
               </Button>
             </div>
 
-            {/* TODO: add payload implementation here */}
             <div className="grid grid-cols-3 gap-6 pt-8 max-w-md mx-auto lg:mx-0">
               <div className="text-center lg:text-left">
                 <div className="text-2xl font-bold text-foreground">50+</div>
@@ -54,16 +81,24 @@ export default function Hero() {
           </div>
 
           {/* Photo Section - Right */}
-          {/* TODO: add payload implementation here */}
           <div className="flex justify-center lg:justify-end">
             <div className="relative">
               <div className="absolute inset-0 bg-muted/20 rounded-2xl blur-2xl transform rotate-3"></div>
               <div className="relative bg-card border border-border rounded-2xl p-3 shadow-xl">
-                <img
-                  src="/developer-headshot.png"
-                  alt="Irfan Murad - Full Stack Developer"
-                  className="w-80 h-96 md:w-96 md:h-[500px] object-cover rounded-xl"
-                />
+                {mediaDoc ? (
+                  <Image
+                    src={mediaDoc.url as string}
+                    alt={mediaDoc.alt || 'Portfolio image'}
+                    width={mediaDoc.width || 400}
+                    height={mediaDoc.height || 500}
+                    className="w-80 h-96 md:w-96 md:h-[500px] object-cover rounded-xl"
+                  />
+                ) : (
+                  // Fallback image if no media is found
+                  <div className="w-80 h-96 md:w-96 md:h-[500px] bg-muted rounded-xl flex items-center justify-center">
+                    <span className="text-muted-foreground">Profile Image</span>
+                  </div>
+                )}
               </div>
 
               <div className="absolute -top-4 -right-4 bg-primary text-primary-foreground px-4 py-2 rounded-full text-sm font-semibold shadow-lg border border-primary/20">

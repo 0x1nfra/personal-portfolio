@@ -1,7 +1,7 @@
 import Link from 'next/link'
 import { Button } from '@/components/ui/button'
 import { Separator } from '@/components/ui/separator'
-import { Twitter, Linkedin, Github, Mail, ArrowUpRight } from 'lucide-react'
+import { Twitter, Linkedin, Github, Mail, ArrowUpRight, MessageCircleMore } from 'lucide-react'
 
 const navigationLinks = [
   { name: 'Home', href: '/' },
@@ -53,7 +53,17 @@ export function Footer() {
                 </div>
 
                 <div className="space-y-6">
-                  <div className="space-y-4">
+                  <div className="flex flex-col gap-4">
+                    <Link
+                      href="mailto:irfanfmurad@gmail.com"
+                      className="inline-flex items-center gap-3 text-foreground hover:text-primary transition-colors group p-2 -m-2 rounded-lg hover:bg-accent/20"
+                    >
+                      <div className="flex items-center justify-center w-8 h-8 rounded-lg bg-muted/50 text-muted-foreground group-hover:bg-primary group-hover:text-primary-foreground transition-all duration-200">
+                        <MessageCircleMore className="h-4 w-4" />
+                      </div>
+                      <span className="font-medium text-lg">Get Quote</span>
+                      <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
+                    </Link>
                     <Link
                       href="mailto:irfanfmurad@gmail.com"
                       className="inline-flex items-center gap-3 text-foreground hover:text-primary transition-colors group p-2 -m-2 rounded-lg hover:bg-accent/20"
@@ -64,16 +74,6 @@ export function Footer() {
                       <span className="font-medium text-lg">irfanfmurad@gmail.com</span>
                       <ArrowUpRight className="h-4 w-4 opacity-0 group-hover:opacity-100 transition-opacity" />
                     </Link>
-                  </div>
-
-                  <div>
-                    <Button
-                      size="lg"
-                      className="rounded-xl px-8 py-6 text-base font-semibold shadow-lg hover:shadow-xl transition-all duration-300 hover:scale-105 bg-gradient-to-r from-primary to-primary/90 hover:cursor-pointer"
-                    >
-                      Get a quote
-                      <ArrowUpRight className="ml-2 h-5 w-5" />
-                    </Button>
                   </div>
                 </div>
               </div>

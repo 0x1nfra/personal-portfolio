@@ -54,7 +54,7 @@ export default function Services() {
     <section className="py-4 px-4 bg-background">
       <div className="max-w-6xl mx-auto">
         <div className="text-center mb-12">
-          <p className="text-sm font-medium text-muted-foreground mb-6">Services</p>
+          <p className="text-sm text-muted-foreground mb-2">Services</p>
           <h2 className="text-3xl font-bold text-foreground mb-4">
             Affordable Web Solutions for Malaysian Businesses
           </h2>
