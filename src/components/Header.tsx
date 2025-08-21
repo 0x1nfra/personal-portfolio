@@ -14,6 +14,7 @@ import { useState } from 'react'
 
 export function Header() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false)
+  const mobileMenuId = 'mobile-navigation'
 
   return (
     <header className="sticky top-0 z-50 w-full border-b border-border/40 bg-background/80 backdrop-blur-xl supports-[backdrop-filter]:bg-background/60">
@@ -100,6 +101,9 @@ export function Header() {
             size="sm"
             className="md:hidden"
             onClick={() => setMobileMenuOpen(!mobileMenuOpen)}
+            aria-label={mobileMenuOpen ? "Close menu" : "Open menu"}
+            aria-expanded={mobileMenuOpen}
+            aria-controls={mobileMenuId}
           >
             {mobileMenuOpen ? <X className="h-5 w-5" /> : <Menu className="h-5 w-5" />}
           </Button>
@@ -107,7 +111,12 @@ export function Header() {
       </div>
 
       {mobileMenuOpen && (
-        <div className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-xl">
+        <div 
+          id={mobileMenuId}
+          className="md:hidden border-t border-border/40 bg-background/95 backdrop-blur-xl"
+          role="menu"
+          aria-hidden={!mobileMenuOpen}
+        >
           <div className="container px-6 py-4 space-y-2">
             <Link
               href="/"

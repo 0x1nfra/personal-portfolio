@@ -139,7 +139,7 @@ export function Contact() {
 
           {/* Right Column - Contact Form */}
           <div className="w-full">
-            <form onSubmit={handleSubmit} className="space-y-6">
+            <form onSubmit={handleSubmit} noValidate className="space-y-6">
               {/* Name Field */}
               <div className="space-y-2">
                 <Label htmlFor="name">Name</Label>
@@ -153,7 +153,12 @@ export function Contact() {
                   aria-describedby={errors.name ? 'name-error' : undefined}
                 />
                 {errors.name && (
-                  <p id="name-error" className="text-sm text-destructive">
+                  <p
+                    id="name-error"
+                    role="alert"
+                    aria-live="polite"
+                    className="text-sm text-destructive"
+                  >
                     {errors.name}
                   </p>
                 )}
@@ -168,13 +173,20 @@ export function Contact() {
                   placeholder="your@email.com"
                   value={formData.email}
                   onChange={(e) => handleInputChange('email', e.target.value)}
+                  autoComplete="email"
                   className={cn(
                     errors.email && 'border-destructive focus-visible:ring-destructive',
                   )}
                   aria-describedby={errors.email ? 'email-error' : undefined}
+                  aria-invalid={!!errors.email}
                 />
                 {errors.email && (
-                  <p id="email-error" className="text-sm text-destructive">
+                  <p
+                    id="email-error"
+                    role="alert"
+                    aria-live="polite"
+                    className="text-sm text-destructive"
+                  >
                     {errors.email}
                   </p>
                 )}
@@ -188,14 +200,21 @@ export function Contact() {
                   placeholder="Tell me about your project"
                   value={formData.message}
                   onChange={(e) => handleInputChange('message', e.target.value)}
+                  autoComplete="off"
                   className={cn(
                     'min-h-[120px] resize-none',
                     errors.message && 'border-destructive focus-visible:ring-destructive',
                   )}
                   aria-describedby={errors.message ? 'message-error' : undefined}
+                  aria-invalid={!!errors.message}
                 />
                 {errors.message && (
-                  <p id="message-error" className="text-sm text-destructive">
+                  <p
+                    id="message-error"
+                    role="alert"
+                    aria-live="polite"
+                    className="text-sm text-destructive"
+                  >
                     {errors.message}
                   </p>
                 )}
