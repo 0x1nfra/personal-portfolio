@@ -19,6 +19,14 @@ export default buildConfig({
     importMap: {
       baseDir: path.resolve(dirname),
     },
+    autoLogin:
+      process.env.NODE_ENV === 'development'
+        ? {
+            email: 'dev@spxrks.tech',
+            password: 'password',
+            prefillOnly: true,
+          }
+        : false,
   },
   collections: [Users, Media],
   editor: lexicalEditor(),
