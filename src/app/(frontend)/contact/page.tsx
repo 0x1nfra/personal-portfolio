@@ -38,12 +38,14 @@ export default function ContactPage() {
                 </CardDescription>
               </CardHeader>
               <CardContent className="flex flex-col h-full">
-                <form className="space-y-4 flex-1 flex flex-col">
+                <form className="space-y-4 flex-1 flex flex-col" noValidate>
                   <div className="space-y-2">
                     <Label htmlFor="name">Name</Label>
                     <Input
                       id="name"
+                      name="name"
                       placeholder="Your name"
+                      autoComplete="name"
                       className="bg-input border-border text-foreground"
                       required
                     />
@@ -53,8 +55,10 @@ export default function ContactPage() {
                     <Label htmlFor="email">Email</Label>
                     <Input
                       id="email"
+                      name="email"
                       type="email"
                       placeholder="your@email.com"
+                      autoComplete="email"
                       className="bg-input border-border text-foreground"
                       required
                     />
@@ -64,6 +68,7 @@ export default function ContactPage() {
                     <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
+                      name="message"
                       placeholder="Tell me about your project, timeline, and budget range..."
                       className="bg-input border-border text-foreground resize-none flex-1 min-h-[120px]"
                       required
@@ -71,7 +76,9 @@ export default function ContactPage() {
                   </div>
 
                   <Button
-                    type="submit"
+                    type="button"
+                    aria-disabled
+                    title="Coming soon"
                     className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-auto"
                   >
                     Send Message
@@ -142,6 +149,7 @@ export default function ContactPage() {
                     href="https://www.linkedin.com/in/irfanmurad/"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="LinkedIn profile"
                     className="bg-primary/10 p-3 rounded-lg hover:bg-primary/20 transition-colors"
                   >
                     <Linkedin className="h-5 w-5 text-primary" />
@@ -150,6 +158,7 @@ export default function ContactPage() {
                     href="https://github.com/0x1nfra"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="GitHub profile"
                     className="bg-primary/10 p-3 rounded-lg hover:bg-primary/20 transition-colors"
                   >
                     <Github className="h-5 w-5 text-primary" />
@@ -158,6 +167,7 @@ export default function ContactPage() {
                     href="https://x.com/0x1nfra"
                     target="_blank"
                     rel="noopener noreferrer"
+                    aria-label="X (formerly Twitter) profile"
                     className="bg-primary/10 p-3 rounded-lg hover:bg-primary/20 transition-colors"
                   >
                     <Twitter className="h-5 w-5 text-primary" />

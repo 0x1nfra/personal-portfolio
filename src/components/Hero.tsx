@@ -5,7 +5,7 @@ import Image from 'next/image'
 import React from 'react'
 
 export default async function Hero() {
-  //   // Fetch media from Payload
+  //   // TODO: Fetch media from Payload
   //   const payload = await getPayload({ config })
   //   const media = await payload.find({
   //     collection: 'media',
