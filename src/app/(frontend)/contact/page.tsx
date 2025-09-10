@@ -30,15 +30,15 @@ export default function ContactPage() {
         <div className="grid lg:grid-cols-3 gap-8">
           {/* Contact Form - spans 2 columns */}
           <div className="lg:col-span-2">
-            <Card className="bg-card border-border h-fit">
+            <Card className="bg-card border-border h-full">
               <CardHeader>
                 <CardTitle className="text-2xl text-card-foreground">Send Me a Message</CardTitle>
                 <CardDescription>
                   Tell me about your project and I&apos;ll get back to you within 24-48 hours.
                 </CardDescription>
               </CardHeader>
-              <CardContent>
-                <form className="space-y-4">
+              <CardContent className="flex flex-col h-full">
+                <form className="space-y-4 flex-1 flex flex-col">
                   <div className="space-y-2">
                     <Label htmlFor="name">Name</Label>
                     <Input
@@ -60,20 +60,19 @@ export default function ContactPage() {
                     />
                   </div>
 
-                  <div className="space-y-2">
+                  <div className="space-y-2 flex-1 flex flex-col">
                     <Label htmlFor="message">Message</Label>
                     <Textarea
                       id="message"
                       placeholder="Tell me about your project, timeline, and budget range..."
-                      rows={6}
-                      className="bg-input border-border text-foreground resize-none"
+                      className="bg-input border-border text-foreground resize-none flex-1 min-h-[120px]"
                       required
                     />
                   </div>
 
                   <Button
                     type="submit"
-                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90"
+                    className="w-full bg-primary text-primary-foreground hover:bg-primary/90 mt-auto"
                   >
                     Send Message
                   </Button>
@@ -84,6 +83,7 @@ export default function ContactPage() {
           </div>
 
           {/* Contact Information & Socials */}
+          {/* TODO: add backend integration for contact information */}
           <div className="space-y-6">
             <Card className="bg-card border-border">
               <CardHeader>
@@ -91,7 +91,7 @@ export default function ContactPage() {
               </CardHeader>
               <CardContent className="space-y-4">
                 <a
-                  href="mailto:hello@yourcompany.com"
+                  href="mailto:irfanfmurad@gmail.com"
                   className="flex items-center space-x-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
                 >
                   <div className="bg-primary/10 p-2 rounded-lg">
@@ -99,20 +99,23 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-medium text-card-foreground">Email</p>
-                    <p className="text-sm text-muted-foreground">hello@yourcompany.com</p>
+                    <p className="text-sm text-muted-foreground">irfanfmurad@gmail.com</p>
                   </div>
                 </a>
 
                 <a
-                  href="https://wa.me/60123456789"
+                  href="https://wa.me/60189039041"
+                  target="_blank"
+                  rel="noopener noreferrer"
                   className="flex items-center space-x-3 p-3 rounded-lg hover:bg-muted/50 transition-colors"
+                  aria-label="WhatsApp"
                 >
                   <div className="bg-primary/10 p-2 rounded-lg">
                     <MessageCircle className="h-5 w-5 text-primary" />
                   </div>
                   <div>
                     <p className="font-medium text-card-foreground">WhatsApp</p>
-                    <p className="text-sm text-muted-foreground">+60 12-345 6789</p>
+                    <p className="text-sm text-muted-foreground">+60189039041</p>
                   </div>
                 </a>
 
@@ -122,12 +125,13 @@ export default function ContactPage() {
                   </div>
                   <div>
                     <p className="font-medium text-card-foreground">Discord</p>
-                    <p className="text-sm text-muted-foreground">@yourusername</p>
+                    <p className="text-sm text-muted-foreground">@ianrikriff</p>
                   </div>
                 </div>
               </CardContent>
             </Card>
 
+            {/* TODO: add backend integration for connect information */}
             <Card className="bg-card border-border">
               <CardHeader>
                 <CardTitle className="text-xl text-card-foreground">Connect</CardTitle>
@@ -135,7 +139,7 @@ export default function ContactPage() {
               <CardContent>
                 <div className="flex space-x-4">
                   <a
-                    href="https://linkedin.com/in/yourprofile"
+                    href="https://www.linkedin.com/in/irfanmurad/"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-primary/10 p-3 rounded-lg hover:bg-primary/20 transition-colors"
@@ -143,7 +147,7 @@ export default function ContactPage() {
                     <Linkedin className="h-5 w-5 text-primary" />
                   </a>
                   <a
-                    href="https://github.com/yourusername"
+                    href="https://github.com/0x1nfra"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-primary/10 p-3 rounded-lg hover:bg-primary/20 transition-colors"
@@ -151,7 +155,7 @@ export default function ContactPage() {
                     <Github className="h-5 w-5 text-primary" />
                   </a>
                   <a
-                    href="https://twitter.com/yourusername"
+                    href="https://x.com/0x1nfra"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="bg-primary/10 p-3 rounded-lg hover:bg-primary/20 transition-colors"
